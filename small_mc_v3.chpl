@@ -17,7 +17,7 @@ const bins_per_mfp = 1e4/microns_per_bin/(mu_a+mu_s);
 
 config const   numPhotons = 100000;
 
-var heat: [0..<BINS] real;
+var heat: [0..<BINS] atomic real;
 
 record photon {
   var x,y,z,u,v,w,weight,rd,bit: real;
@@ -66,7 +66,7 @@ proc ref photon.absorb () /* Absorb light in the medium */
   var bin=(z*bins_per_mfp):int;
 
   if bin >= BINS then bin = BINS-1;
-  heat[bin] += (1.0-albedo)*weight;
+  heat[bin].add((1.0-albedo)*weight);
   weight *= albedo;
   if weight < 0.001 { /* Roulette */
     bit -= weight;
@@ -114,9 +114,9 @@ proc print_results(rd, bit) /* Print the results */
   writef("\n\n Depth         Heat\n[microns]     [W/cm^3]\n");
 
   for i in 0..<BINS-1 {
-    writef("%6.0dr    %12.5dr\n",i*microns_per_bin, heat[i]/microns_per_bin*1e4/(bit+numPhotons));
+    writef("%6.0dr    %12.5dr\n",i*microns_per_bin, heat[i].read()/microns_per_bin*1e4/(bit+numPhotons));
   }
-  writef(" extra    %12.5dr\n",heat[BINS-1]/(bit+numPhotons));
+  writef(" extra    %12.5dr\n",heat[BINS-1].read()/(bit+numPhotons));
 }
 
 proc main ()
@@ -134,6 +134,6 @@ proc main ()
 
   const rd = + reduce [p in photons] p.rd;
   const bit = + reduce [p in photons] p.bit;
+
   print_results(rd, bit);
-  return 0;
 }
