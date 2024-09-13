@@ -113,7 +113,6 @@ proc print_results() /* Print the results */
 
 proc main ()
 {
-  writeln(RAND_MAX);
   albedo = mu_s / (mu_s + mu_a);
   rs = (n-1.0)*(n-1.0)/(n+1.0)/(n+1.0);	/* specular reflection */
   crit_angle = sqrt(1.0-1.0/n/n);			/* cos of critical angle */
