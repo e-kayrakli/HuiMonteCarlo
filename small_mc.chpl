@@ -126,7 +126,6 @@ proc main ()
       absorb ();
       scatter ();
     }
-    /*writeln(rs, " ", rd, " ", bit, " ", weight);*/
   }	
   print_results();
   return 0;
