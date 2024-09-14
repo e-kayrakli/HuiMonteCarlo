@@ -29,6 +29,7 @@ ideal testbed.
 - Chapel 2.2 (compiled with only `--fast`)
 - gcc 13.2 (compiled with `-O3 -lm`)
 
+All numbers are seconds (lower is better).
 
 |numPhotons  | C     | v1     | v2     | v3 (parallel+naive sync)| v3 (parallel+race)| v4 (naive GPU)
 |------------|-------|--------|--------|-------------------------|-------------------|----------------
