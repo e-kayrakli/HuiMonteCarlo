@@ -10,7 +10,7 @@ const mu_s = 95.0;			/* Scattering Coefficient in 1/cm */
 const g = 0.5;				/* Scattering Anisotropy -1<=g<=1 */
 const n = 1.5;				/* Index of refraction of medium */
 const microns_per_bin = 20;/* Thickness of one bin layer */
-var   i, photons = 100000;
+config const photons = 100000;
 var x,y,z,u,v,w,weight: real;
 var rs, rd, bit, albedo, crit_angle, bins_per_mfp: real;
 var heat: [0..<BINS] real;

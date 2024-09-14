@@ -15,7 +15,7 @@ const rs = (n-1.0)*(n-1.0)/(n+1.0)/(n+1.0);	/* specular reflection */
 const crit_angle = sqrt(1.0-1.0/n/n);			/* cos of critical angle */
 const bins_per_mfp = 1e4/microns_per_bin/(mu_a+mu_s);
 
-var   numPhotons = 100000;
+config const   numPhotons = 100000;
 
 var heat: [0..<BINS] real;
 
