@@ -18,7 +18,7 @@ This is a quick Chapel port of https://omlc.org/software/mc/small_mc.c.
   that this is a typical optimization for GPUs regardless of the programming
   language. This will reduce readability, but hopefully will improve performance
   significantly.
-- `small_mc_v5: A less memory intensive version of the GPU implementation
+- `small_mc_v5.chpl`: A less memory intensive version of the GPU implementation
 
 ### Quick performance experiment
 
