@@ -18,6 +18,7 @@ This is a quick Chapel port of https://omlc.org/software/mc/small_mc.c.
   that this is a typical optimization for GPUs regardless of the programming
   language. This will reduce readability, but hopefully will improve performance
   significantly.
+- `small_mc_v5: A less memory intensive version of the GPU implementation
 
 ### Quick performance experiment
 
@@ -31,9 +32,9 @@ ideal testbed.
 
 All numbers are seconds (lower is better).
 
-|numPhotons  | C     | v1     | v2     | v3 (parallel+naive sync)| v3 (parallel+race)| v4 (naive GPU)
-|------------|-------|--------|--------|-------------------------|-------------------|----------------
-|100_000     | 0.625 | 0.276  | 0.320  | 1.550                   | 0.100             | 1.091
-|1_000_000   | 6.131 | 2.351  | 2.715  | 15.047                  | 0.627             | 1.375
-|10_000_000  | 60.98 | 23.434 | 24.014 | 46.931                  | 5.761             | 4.102
-|100_000_000 |       |        |        |                         | 65.33             | OOM
+|numPhotons  | C     | v1     | v2     | v3 (parallel+naive sync)| v3 (parallel+race)| v4 (naive GPU) | v5 (less memory GPU)
+|------------|-------|--------|--------|-------------------------|-------------------|----------------|---------------------
+|100_000     | 0.625 | 0.276  | 0.320  | 1.550                   | 0.100             | 1.091          |
+|1_000_000   | 6.131 | 2.351  | 2.715  | 15.047                  | 0.627             | 1.375          |
+|10_000_000  | 60.98 | 23.434 | 24.014 | 46.931                  | 5.761             | 4.102          | 4.087
+|100_000_000 |       |        |        |                         | 65.33             | OOM            | 31.087
